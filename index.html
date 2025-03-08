@@ -9,7 +9,7 @@
     <title>み</title>
     <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/@tsparticles/basic@3.4.0/tsparticles.basic.bundle.min.js" defer></script>
-    <script src="static/js/initialize.js" defer></script>
+    <script src="static/js/initialize.min.js" defer></script>
     <script src="static/js/index.js" defer></script>
     <link rel="stylesheet" href="static/css/style.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
@@ -19,23 +19,42 @@
   <body>
     <div class="view-tile absolute left-0 top-0 -z-50" id="particles"></div>
     <div class="view-tile flex items-center justify-center flex-col">
-      <span class="view-title animate__animated animate__fadeIn animate__slow">尾矢すみ</span>
-      <div class="pt-12 join">
+      <div class="m-12">
+        <div class="-rotate-6 text-center">
+          <div class="splash -mt-16 -ms-28 w-full" id="splash"></div>
+        </div>
+        <span class="view-title animate__animated animate__fadeIn animate__slow">尾矢すみ</span>
+      </div>
+      <div class="join">
         <button class="btn btn-outline join-item" data-dialog-toggle="modal__about">自介</button>
+        <button class="btn btn-outline join-item" data-dialog-toggle="modal__stargaze">天文社</button>
         <div class="tooltip tooltip-info tooltip-bottom" data-tip="非官方 Gawr Gura Discord 粉絲群">
           <button class="btn btn-outline join-item" data-dialog-toggle="modal__discord">Discord</button>
         </div>
       </div>
     </div>
+
     <dialog class="modal" id="modal__about">
-      <div class="modal-box">
+      <div class="modal-box max-w-prose">
         <button class="btn btn-sm btn-circle btn-ghost float-right" data-dialog-toggle="modal__about">✕</button>
         <div class="md:text-2xl text-xl font-bold">自介</div>
-        <hr class="my-8" />
+        <hr class="my-4" />
         <div class="text-base">
           <p>尾矢すみ, 酥米, 林昕渪</p>
+          <p>
+            <a class="link link-accent link-hover" href="https://www.youtube.com/channel/UCah4_WVjmr8XA7i5aigwV-Q">ヰ組</a>,
+            <a class="link link-accent link-hover" href="https://www.youtube.com/@NakiriAyame">百鬼組</a>,
+            <a class="link link-accent link-hover" href="https://www.youtube.com/@GawrGura">Chumbud</a>,
+            <a class="link link-accent link-hover" href="https://www.youtube.com/@-kamitochannel-2486">かみと</a>,
+            <a class="link link-accent link-hover" href="https://www.youtube.com/@hinanotachiba7">橘ひなの</a>,
+            <a class="link link-accent link-hover" href="https://www.youtube.com/@KagaSumire">花芽すみれ</a>,
+            <a class="link link-accent link-hover" href="https://www.youtube.com/@nazunakaga">花芽なずな</a>,
+            <a class="link link-accent link-hover" href="https://www.twitch.tv/tororo_vtuber">猫麦とろろ</a>,
+            <a class="link link-accent link-hover" href="https://www.youtube.com/@RurufuHizuki">陽月るるふ</a>
+          </p>
           <br />
-          <p>Nothing worth noting.</p>
+          <p>尾矢すみ讀做 "oyasumi", 與日文的晚安同音.</p>
+          <p>林昕渪絕對不是我的本名.</p>
           <div class="divider"></div>
           <p class="text-base">
             <i class="bi-discord mr-1"></i>
@@ -43,18 +62,55 @@
           </p>
           <p class="text-base">
             <i class="bi bi-twitter mr-1"></i>
-            <a class="link link-hover" href="https://x.com/SteveSepp87">@SteveSepp87</a>
+            <a class="link link-accent link-hover" href="https://x.com/SteveSepp87">@SteveSepp87</a>
           </p>
           <p class="text-base">
             <i class="bi bi-youtube mr-1"></i>
-            <a class="link link-hover" href="https://www.youtube.com/channel/UCHz2cAqLANEEQR3O_6Txs_w">尾矢すみ</a>
+            <a class="link link-accent link-hover" href="https://www.youtube.com/channel/UCHz2cAqLANEEQR3O_6Txs_w">尾矢すみ</a>
+          </p>
+          <p class="text-base">
+            <i class="bi bi-youtube mr-1"></i>
+            <a class="link link-accent link-hover" href="https://www.youtube.com/@%E5%B0%BE%E7%9F%A2%E3%81%99%E3%81%BFsub">尾矢すみSub</a>
           </p>
         </div>
       </div>
       <div class="modal-backdrop" data-dialog-toggle="modal__about"></div>
     </dialog>
+
+    <dialog class="modal" id="modal__stargaze">
+      <div class="modal-box max-w-prose">
+        <button class="btn btn-sm btn-circle btn-ghost float-right" data-dialog-toggle="modal__stargaze">✕</button>
+        <div class="md:text-2xl text-xl font-bold">天文社</div>
+        <hr class="my-4" />
+        <div class="carousel w-full">
+          <div id="slide1" class="carousel-item relative w-full">
+            <img class="w-full object-scale-down" src="static/img/240615.webp" />
+            <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+              <a href="#slide3" class="btn btn-circle">❮</a>
+              <a href="#slide2" class="btn btn-circle">❯</a>
+            </div>
+          </div>
+          <div id="slide2" class="carousel-item relative w-full">
+            <img class="w-full object-scale-down" src="static/img/231029.webp"/>
+            <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+              <a href="#slide1" class="btn btn-circle">❮</a>
+              <a href="#slide3" class="btn btn-circle">❯</a>
+            </div>
+          </div>
+          <div id="slide3" class="carousel-item relative w-full">
+            <img class="w-full object-scale-down" src="static/img/230922.webp"/>
+            <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+              <a href="#slide2" class="btn btn-circle">❮</a>
+              <a href="#slide1" class="btn btn-circle">❯</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-backdrop" data-dialog-toggle="modal__stargaze"></div>
+    </dialog>
+
     <dialog class="modal" id="modal__discord">
-      <div class="modal-box">
+      <div class="modal-box max-w-prose">
         <button class="btn btn-sm btn-circle btn-ghost float-right" data-dialog-toggle="modal__discord">✕</button>
         <div class="md:text-2xl text-xl font-bold mb-8">非官方 Gawr Gura Discord 粉絲群</div>
         <div class="mockup-window bg-base-300 border w-full">

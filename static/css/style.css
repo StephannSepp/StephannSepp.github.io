@@ -31,12 +31,34 @@
     @apply text-4xl font-bold;
     @apply md:text-6xl;
   }
+
+  .splash {
+    @apply text-nowrap;
+    align-self: anchor-center;
+    animation: mcsplash 1.5s infinite;
+    color: yellow;
+    font-family: 'monospace';
+    font-size: 32px;
+    font-weight: bold;
+    position: absolute;
+  }
+
+  @keyframes mcsplash {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
 }
 
 @layer utilities {
   .stroke-dark {
-    text-shadow: -2px -2px 0 #181818, 0 -2px 0 #181818, 2px -2px 0 #181818, 2px 0 0 #181818, 2px 2px 0 #181818,
-      0 2px 0 #181818, -2px 2px 0 #181818, -2px 0 0 #181818;
+    text-shadow: -2px -2px 0 #181818, 0 -2px 0 #181818, 2px -2px 0 #181818,
+      2px 0 0 #181818, 2px 2px 0 #181818, 0 2px 0 #181818, -2px 2px 0 #181818,
+      -2px 0 0 #181818;
   }
 
   .icon-discord::after {
